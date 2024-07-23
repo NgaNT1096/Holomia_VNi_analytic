@@ -34,6 +34,7 @@ class AnalyticsController extends Controller
 
         $activeUsers = VormAnalytics::activeUsers();
         $pageviews = VormAnalytics::totalViews(VormPeriod::days(1));
+//return $pageviews;
         $linkView =  Cache::remember('linkView_daliy', strtotime(Carbon::tomorrow()) - strtotime(Carbon::now()), function () {
             return Analytics::fetchMostVisitedPages(Period::days(1), $maxResults = 15);
         });

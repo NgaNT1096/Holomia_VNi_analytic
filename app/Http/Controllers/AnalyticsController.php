@@ -101,7 +101,7 @@ class AnalyticsController extends Controller
         $activeUsers = VormAnalytics::activeUsers();
         $check = true;
         $pageviews = VormAnalytics::totalViews(VormPeriod::days($day));
-        $linkView =  Analytics::fetchMostVisitedPages(Period::days($day), $maxResults = 15);
+        $linkView =  Analytics::fetchMostVisitedPages(Period::days($day), $maxResults = 200);
         $country =
             Analytics::get(
                 Period::days($day),
@@ -236,7 +236,8 @@ class AnalyticsController extends Controller
                 'field_name' => 'pageTitle',
                 'string_filter' => new StringFilter([
                     'match_type' => MatchType::CONTAINS,
-                    'value' => $project . " VR Showroom",
+                    // 'value' => $project . " VR Showroom",
+                    'value' => $project,
                 ]),
             ]),
         ]);
